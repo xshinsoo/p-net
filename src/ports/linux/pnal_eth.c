@@ -69,6 +69,10 @@ static void os_eth_task (void * thread_arg)
       if (eth_handle->callback != NULL)
       {
          handled = eth_handle->callback (eth_handle, eth_handle->arg, p);
+         // Add delay for ARP responses
+         if (is_arp_packet(p)) { // Replace `is_arp_packet` with actual ARP check
+             usleep(500000); // Delay for 500ms
+         }
       }
       else
       {
