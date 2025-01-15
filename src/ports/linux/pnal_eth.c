@@ -40,6 +40,10 @@ struct pnal_eth_handle
    os_thread_t * thread;
 };
 
+static bool is_arp_packet (pnal_buf_t * p) {
+    struct ethhdr * eth_header = (struct ethhdr *)p->payload;
+    return ntohs(eth_header->h_proto) == ETH_P_ARP;
+}
 /**
  * @internal
  * Run a thread that listens to incoming raw Ethernet sockets.
@@ -71,7 +75,7 @@ static void os_eth_task (void * thread_arg)
          handled = eth_handle->callback (eth_handle, eth_handle->arg, p);
          // Add delay for ARP responses
          if (is_arp_packet(p)) { // Replace `is_arp_packet` with actual ARP check
-             usleep(500000); // Delay for 500ms
+             os_usleep(500000); // Delay for 500ms
          }
       }
       else
