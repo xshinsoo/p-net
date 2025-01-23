@@ -224,7 +224,7 @@
 #endif
 
 #ifndef PF_RPC_LOG
-#define PF_RPC_LOG              (LOG_STATE_@PF_RPC_LOG@)
+#define PF_RPC_LOG              1
 #endif
 
 #ifndef PF_ALARM_LOG
@@ -240,7 +240,7 @@
 #endif
 
 #ifndef PNET_LOG
-#define PNET_LOG                (LOG_STATE_@PNET_LOG@)
+#define PNET_LOG                1
 #endif
 
 #endif  /* OPTIONS_H */
