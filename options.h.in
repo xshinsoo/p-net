@@ -224,7 +224,7 @@
 #endif
 
 #ifndef PF_RPC_LOG
-#define PF_RPC_LOG              1
+#define PF_RPC_LOG              0
 #endif
 
 #ifndef PF_ALARM_LOG
@@ -240,7 +240,7 @@
 #endif
 
 #ifndef PNET_LOG
-#define PNET_LOG                1
+#define PNET_LOG                0
 #endif
 
 #endif  /* OPTIONS_H */
