@@ -18,7 +18,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-static int32_t log_level = APP_DEFAULT_LOG_LEVEL;
+static int32_t log_level = APP_LOG_LEVEL_DEBUG;
 
 void app_log_set_log_level (int32_t level)
 {
