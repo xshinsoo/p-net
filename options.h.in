@@ -200,47 +200,47 @@
 #endif
 
 #ifndef PF_ETH_LOG
-#define PF_ETH_LOG              0
+#define PF_ETH_LOG              (LOG_STATE_@PF_ETH_LOG@)
 #endif
 
 #ifndef PF_LLDP_LOG
-#define PF_LLDP_LOG             0
+#define PF_LLDP_LOG             (LOG_STATE_@PF_LLDP_LOG@)
 #endif
 
 #ifndef PF_SNMP_LOG
-#define PF_SNMP_LOG             0
+#define PF_SNMP_LOG             (LOG_STATE_@PF_SNMP_LOG@)
 #endif
 
 #ifndef PF_CPM_LOG
-#define PF_CPM_LOG              0
+#define PF_CPM_LOG              (LOG_STATE_@PF_CPM_LOG@)
 #endif
 
 #ifndef PF_PPM_LOG
-#define PF_PPM_LOG              0
+#define PF_PPM_LOG              (LOG_STATE_@PF_PPM_LOG@)
 #endif
 
 #ifndef PF_DCP_LOG
-#define PF_DCP_LOG              0
+#define PF_DCP_LOG              (LOG_STATE_@PF_DCP_LOG@)
 #endif
 
 #ifndef PF_RPC_LOG
-#define PF_RPC_LOG              0
+#define PF_RPC_LOG              (LOG_STATE_@PF_RPC_LOG@)
 #endif
 
 #ifndef PF_ALARM_LOG
-#define PF_ALARM_LOG            0
+#define PF_ALARM_LOG            (LOG_STATE_@PF_ALARM_LOG@)
 #endif
 
 #ifndef PF_AL_BUF_LOG
-#define PF_AL_BUF_LOG           0
+#define PF_AL_BUF_LOG           (LOG_STATE_@PF_AL_BUF_LOG@)
 #endif
 
 #ifndef PF_PNAL_LOG
-#define PF_PNAL_LOG             0
+#define PF_PNAL_LOG             (LOG_STATE_@PF_PNAL_LOG@)
 #endif
 
 #ifndef PNET_LOG
-#define PNET_LOG                0
+#define PNET_LOG                (LOG_STATE_@PNET_LOG@)
 #endif
 
 #endif  /* OPTIONS_H */
