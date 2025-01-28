@@ -3762,6 +3762,8 @@ int pf_cmrpc_rm_ccontrol_req (
 
       rpc_req.object_uuid = p_ar->ar_param.cm_initiator_object_uuid;
 
+      LOG_INFO(PF_RPC_LOG, "SON RPC message was received!\n");
+
       /* Controller RPC id */
       rpc_req.interface_uuid.data1 = 0xdea00002;
       rpc_req.interface_uuid.data2 = 0x6c97;
