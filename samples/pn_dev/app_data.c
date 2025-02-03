@@ -25,6 +25,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>   // For open()
+#include <unistd.h>  // For write(), close()
+#include <errno.h>
 
 #define APP_DATA_DEFAULT_OUTPUT_DATA 0
 
@@ -47,11 +50,14 @@ static uint32_t app_param_echo_gain = 1; /* Network endianness */
  * The stored value is shared between all digital submodules in this example. */
 static uint8_t inputdata[APP_GSDML_INPUT_DATA_DIGITAL_SIZE] = {0};
 static uint8_t outputdata[APP_GSDML_OUTPUT_DATA_DIGITAL_SIZE] = {0};
-static uint8_t counter = 0;
+//static uint8_t counter = 0;
 
 /* Network endianness */
 static uint8_t echo_inputdata[APP_GSDML_INPUT_DATA_ECHO_SIZE] = {0};
 static uint8_t echo_outputdata[APP_GSDML_OUTPUT_DATA_ECHO_SIZE] = {0};
+
+/* Pipe related */
+const char *pipePath = "/tmp/my_pipe";
 
 CC_PACKED_BEGIN
 typedef struct CC_PACKED app_echo_data
@@ -115,7 +121,23 @@ uint8_t * app_data_get_input_data (
       /* Prepare digital input data
        * Lowest 7 bits: Counter    Most significant bit: Button
        */
-      inputdata[0] = counter++;
+      //inputdata[0] = counter++;
+      int fd = open(pipePath, O_RDWR);
+      if (fd == -1) {
+         const char* err_msg = strerror(errno);
+         APP_LOG_DEBUG("Error opening pipe: %s\n", err_msg);
+      }
+      else
+      {
+        // Write the uint8_t value to the pipe
+        ssize_t bytes_written = write(fd, &inputdata, sizeof(inputdata));
+        if (bytes_written == -1) {
+            APP_LOG_DEBUG ("Error writing to pipe\n");
+        }
+        close(fd);
+      }
+    
+      inputdata[0] = outputdata[0];
       if (button_pressed)
       {
          inputdata[0] |= 0x80;
