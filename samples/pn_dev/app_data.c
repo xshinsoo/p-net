@@ -50,7 +50,7 @@ static uint32_t app_param_echo_gain = 1; /* Network endianness */
  * The stored value is shared between all digital submodules in this example. */
 static uint8_t inputdata[APP_GSDML_INPUT_DATA_DIGITAL_SIZE] = {0};
 static uint8_t outputdata[APP_GSDML_OUTPUT_DATA_DIGITAL_SIZE] = {0};
-//static uint8_t counter = 0;
+static uint8_t counter = 0;
 
 /* Network endianness */
 static uint8_t echo_inputdata[APP_GSDML_INPUT_DATA_ECHO_SIZE] = {0};
@@ -152,6 +152,14 @@ uint8_t * app_data_get_input_data (
       return inputdata;
    }
 
+   if (submodule_id == APP_GSDML_SUBMOD_ID_MOTOR_DIRECTION)
+   {
+      inputdata[0] = counter++;
+      *size = 1;
+      *iops = PNET_IOXS_GOOD;
+      return inputdata;
+   }
+
    if (submodule_id == APP_GSDML_SUBMOD_ID_ECHO)
    {
       /* Calculate echodata input (to the PLC)
@@ -210,6 +218,11 @@ int app_data_set_output_data (
 
          return 0;
       }
+   }
+   else if (submodule_id == APP_GSDML_SUBMOD_ID_MOTOR_DIRECTION)
+   {
+       memcpy (outputdata, data, size);
+       return 0;
    }
    else if (submodule_id == APP_GSDML_SUBMOD_ID_ECHO)
    {

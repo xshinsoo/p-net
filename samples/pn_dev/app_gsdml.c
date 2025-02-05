@@ -52,7 +52,7 @@ static const app_gsdml_module_t module_digital_out = {
 static const app_gsdml_module_t module_digital_in_out = {
    .id = APP_GSDML_MOD_ID_8_8_DIGITAL_IN_OUT,
    .name = "DIO 8xLogicLevel",
-   .submodules = {APP_GSDML_SUBMOD_ID_DIGITAL_IN_OUT, 0}};
+   .submodules = {APP_GSDML_SUBMOD_ID_MOTOR_DIRECTION, APP_GSDML_SUBMOD_ID_DIGITAL_IN_OUT, 0}};
 
 static const app_gsdml_module_t module_echo = {
    .id = APP_GSDML_MOD_ID_ECHO,
@@ -142,6 +142,15 @@ static const app_gsdml_submodule_t submod_digital_inout = {
    .outsize = APP_GSDML_OUTPUT_DATA_DIGITAL_SIZE,
    .parameters = {APP_GSDML_PARAMETER_1_IDX, APP_GSDML_PARAMETER_2_IDX, 0}};
 
+static const app_gsdml_submodule_t submod_motor_direction = {
+   .id = APP_GSDML_SUBMOD_ID_MOTOR_DIRECTION,
+   .name = "Motor Direction",
+   .api = APP_GSDML_API,
+   .data_dir = PNET_DIR_IO,
+   .insize = 0,
+   .outsize = 1,
+   .parameters = {0}};
+
 static const app_gsdml_submodule_t submod_echo = {
    .id = APP_GSDML_SUBMOD_ID_ECHO,
    .name = "Echo submodule",
@@ -171,6 +180,7 @@ static const app_gsdml_submodule_t * app_gsdml_submodules[] = {
    &submod_digital_in,
    &submod_digital_out,
    &submod_digital_inout,
+   &submod_motor_direction,
 
    &submod_echo,
 };
