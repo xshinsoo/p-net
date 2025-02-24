@@ -148,7 +148,7 @@ static const app_gsdml_submodule_t submod_motor_direction = {
    .api = APP_GSDML_API,
    .data_dir = PNET_DIR_IO,
    .insize = 0,
-   .outsize = 1,
+   .outsize = 4,
    .parameters = {0}};
 
 static const app_gsdml_submodule_t submod_echo = {
