@@ -70,7 +70,7 @@ static inline uint32_t atomic_fetch_sub (atomic_int * p, uint32_t v)
 /** This should be smaller than PF_FRAME_BUFFER_SIZE with the maximum size of
  * IP- and UDP headers, and some margin. Linux will fragment frames if this is
  * larger than 1464. */
-#define PF_MAX_UDP_PAYLOAD_SIZE 1440
+#define PF_MAX_UDP_PAYLOAD_SIZE 2048
 
 /**
  * Timeout in milliseconds after which the CControl request is re-transmitted.
