@@ -175,7 +175,7 @@
 
 #if !defined (PNET_MAX_SESSION_BUFFER_SIZE)
 /** Max fragmented RPC request/response length */
-#define PNET_MAX_SESSION_BUFFER_SIZE 9000
+#define PNET_MAX_SESSION_BUFFER_SIZE 30000
 #endif
 
 #if !defined (PNET_MAX_FILENAME_SIZE)
